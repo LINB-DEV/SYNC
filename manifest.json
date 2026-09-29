@@ -1,7 +1,7 @@
 {
   "id": "linb-sync",
   "name": "LINBSYNC",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "minAppVersion": "1.8.0",
   "description": "A collaborative workspace with notes, tasks, Kanban, comments, and invite-only synchronization through LINB ID.",
   "author": "LINB",
