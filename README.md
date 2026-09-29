@@ -6,7 +6,7 @@ A collaborative workspace for notes, tasks, Kanban and comments in Obsidian.
 
 Requires Obsidian 1.8 or later.
 
-1. Download **main.js**, **manifest.json** and **styles.css** from the same [release](https://github.com/LINB-DEV/SYNC/releases/latest).
+1. Download **main.js**, **manifest.json** and **styles.css** from the same [release](https://github.com/LINB-DEV/SYNC-PUBLIC/releases/latest).
 2. Place the files in `<vault>/.obsidian/plugins/linb-sync/`.
 3. Open **Settings → Community plugins** and enable **LINB Sync**.
 
@@ -30,7 +30,7 @@ There is no analytics or advertising tracking. Audio recording requests micropho
 
 ## Support
 
-[Report a problem](https://github.com/LINB-DEV/SYNC/issues). Do not include passwords, session tokens, invitation codes or private notes.
+[Report a problem](https://github.com/LINB-DEV/SYNC-PUBLIC/issues). Do not include passwords, session tokens, invitation codes or private notes.
 
 ## License
 
