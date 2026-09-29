@@ -16,9 +16,11 @@ To update, back up your vault, disable LINBSYNC, replace the three files and ena
 
 When you first enable LINBSYNC, or choose **Sign in with LINB ID**, your browser opens [LINB ID](https://id.linb.org) to sign in or create an account.
 
-Joining the shared vault requires an invitation from its owner. After signing in and confirming LINB ID authorization, enter the invitation on the browser page. A LINB ID registration invitation and a vault invitation are separate; creating an account does not grant access to shared notes. Existing members can sign in without a new invitation. Vault owners can open member management from plugin settings to create invitations or remove access.
+Joining the shared vault requires an invitation from its owner. After signing in and authorizing LINB ID, enter the vault invitation on the browser page. A LINB ID registration invitation and a vault invitation are separate; creating an account does not grant access to shared notes. Existing members can sign in without a new invitation.
 
-For your first connection, use a new, empty vault named **Linb Vault**. Shared content will download after you sign in.
+The current vault joins after you sign in. A new empty vault or a specific vault name is not required. Its supported files will synchronize with admitted members; only connect a vault whose contents you intend to share.
+
+For simultaneous editing of LINB rich documents (`.1inb`), update every participating device to **0.5.8 or later**. Existing recovery copies are preserved so you can compare their contents.
 
 ## Your data
 
