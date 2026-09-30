@@ -1,39 +1,50 @@
-# LINBSYNC
+# LINB
 
-A collaborative workspace for notes, tasks, Kanban and comments in Obsidian.
+A collaborative workspace for Obsidian: synchronized notes, tasks, Kanban boards and comments, using your LINB ID.
 
-## Install
+## Getting started
 
-Requires Obsidian 1.8 or later.
+1. Install the plugin in Obsidian 1.8 or later and enable it. On first enable, the plugin opens the LINB ID sign-in page in your browser. You can also choose **Sign in with LINB ID** from the command palette or **Sign in with LINB ID** in plugin settings.
+2. Sign in or create an account at [LINB ID](https://id.linb.org). Account registration may require an ID invitation, according to the current registration policy.
+3. Access to the shared vault requires a separate invitation from its owner. After signing in and authorizing LINB ID, enter the vault invitation on the browser page. Registering a LINB ID does not grant access to the vault.
+4. Confirm the request in your browser and return to Obsidian. The current vault joins the shared library; a new empty vault or a specific vault name is not required. Files in this vault become shared with admitted members.
 
-1. Download **main.js**, **manifest.json** and **styles.css** from the same [release](https://github.com/LINB-DEV/SYNC-PUBLIC/releases/latest).
-2. Place the files in `<vault>/.obsidian/plugins/linb-sync/`.
-3. Open **Settings → Community plugins** and enable **LINBSYNC**.
+Existing members can sign in again without an invitation. The vault owner can create one-use, expiring invitations in member management. The existing owner uses their LINB ID.
 
-To update, back up your vault, disable LINBSYNC, replace the three files and enable it again. Keep your existing `data.json` to preserve settings.
+For simultaneous editing of a LINB rich document (`.1inb`), update every participating device to 0.5.8 or later. Existing recovery copies are kept so you can compare their contents.
 
-## Sign in and join
+## Installation before Community review
 
-When you first enable LINBSYNC, or choose **Sign in with LINB ID**, your browser opens [LINB ID](https://id.linb.org) to sign in or create an account.
+Download `main.js`, `manifest.json` and `styles.css` from the same [release](https://github.com/LINB-DEV/SYNC-PUBLIC/releases). Put them in `<vault>/.obsidian/plugins/linb-sync/`, then enable **LINB** under Community plugins. The plugin ID is `linb-sync`. A GitHub release does not mean the plugin has been accepted into the Obsidian Community directory.
 
-Joining the shared vault requires an invitation from its owner. After signing in and authorizing LINB ID, enter the vault invitation on the browser page. A LINB ID registration invitation and a vault invitation are separate; creating an account does not grant access to shared notes. Existing members can sign in without a new invitation.
+## Network, accounts and privacy
 
-The current vault joins after you sign in. A new empty vault or a specific vault name is not required. Its supported files will synchronize with admitted members; only connect a vault whose contents you intend to share.
+- This is the client for the LINB shared service. Synchronization requires internet access, a LINB ID and admission to the shared vault.
+- Authentication opens `id.linb.org`. The plugin talks to `sync.linb.org` over HTTPS and secure WebSocket. Passwords, Passkeys and the confidential OIDC client secret are not stored in the plugin. The plugin retains its SYNC session token in Obsidian plugin data while signed in.
+- Connecting synchronizes shared-vault content and attachments with the service and other admitted members. Treat content placed in that vault as shared. Transport is encrypted; the shared vault is **not end-to-end encrypted by default**.
+- Local working state is stored in the vault and browser storage used by Obsidian. Back up valuable notes before connecting. Signing out does not erase already downloaded files.
+- Audio recording features ask for microphone permission when used. The plugin does not implement analytics, advertising telemetry, or its own plugin updater.
+- LINB is independent of the official Obsidian Sync service. This private source repository contains only the Obsidian client; service implementation, deployment configuration and credentials are not included.
 
-For simultaneous editing of LINB rich documents (`.1inb`), update every participating device to **0.5.8 or later**. Existing recovery copies are preserved so you can compare their contents.
+## Build from source
 
-## Your data
+Use Node.js 22 or later:
 
-LINBSYNC reads and updates notes and attachments in the connected vault to keep them synchronized. Shared content is available to other admitted members. Only connect content you intend to share, and back up important notes.
+```sh
+npm ci
+npm run check
+npm run build
+```
 
-The plugin connects to `sync.linb.org` and uses `id.linb.org` for sign-in. Connections are encrypted in transit; shared content is not end-to-end encrypted by default. Your session is saved on this device. Your LINB ID password and Passkey are not stored by the plugin. Signing out does not delete downloaded files.
+The build produces readable `main.js`, `manifest.json`, `styles.css` and `THIRD-PARTY-NOTICES.txt` at the repository root. It rejects server modules and Node-only runtime APIs in the client bundle. Releases use a tag matching the manifest version exactly (for example `0.5.1`). No production credentials are needed to build.
 
-There is no analytics or advertising tracking. Audio recording requests microphone access when used. LINBSYNC is independent of Obsidian Sync.
+## License and support
 
-## Support
+MIT; see [LICENSE](LICENSE) and [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt). The incorporated Kanban code retains its original license in `plugin/src/kanban/LICENSE`.
 
-[Report a problem](https://github.com/LINB-DEV/SYNC-PUBLIC/issues). Do not include passwords, session tokens, invitation codes or private notes.
+Report issues in this repository. Never include session tokens, invitations, private notes or credentials in an issue.
 
-## License
 
-See [LICENSE](LICENSE). Third-party license notices are included in the plugin.
+## Sign-in and offline access
+
+LINB ID sign-in is required before workspace features are activated. Signed-in devices keep working offline. Signing out or receiving a session-revocation response disables the plugin features without deleting local documents. An offline device learns about remote revocation when it reconnects.
