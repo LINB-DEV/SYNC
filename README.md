@@ -48,3 +48,10 @@ Report issues in this repository. Never include session tokens, invitations, pri
 ## Sign-in and offline access
 
 LINB ID sign-in is required before workspace features are activated. Signed-in devices keep working offline. Signing out or receiving a session-revocation response disables the plugin features without deleting local documents. An offline device learns about remote revocation when it reconnects.
+
+
+## Document sharing and PDF export
+
+In a LINB document, open **Share document** to publish a read-only web link. **Anyone with the link** can view without joining your shared vault. **Invited members only** requires a selected shared-vault member to sign in with LINB ID. Editing stays in the original vault. You can copy the latest link and revoke your published links, including links created on another device. Changing a draft does not change existing links. Links expose only the original document and its referenced images, not the entire vault. There is no save-copy or import action.
+
+**Export PDF** is available on desktop and mobile. Mobile rendering is local and offers **Save to vault** (`Exports/`, with unique filenames) and system file sharing where supported. Mobile PDF pages are images, so their text is not selectable. No document is uploaded for PDF rendering.
