@@ -36,7 +36,7 @@ npm run check
 npm run build
 ```
 
-The build produces readable `main.js`, `manifest.json`, `styles.css` and `THIRD-PARTY-NOTICES.txt` at the repository root. It rejects server modules and Node-only runtime APIs in the client bundle. Releases use a tag matching the manifest version exactly (for example `0.5.1`). No production credentials are needed to build.
+The build produces readable `main.js`, `manifest.json`, `styles.css` and `THIRD-PARTY-NOTICES.txt` at the repository root. It rejects server modules, Node-only runtime APIs and literal runtime script-element creation in the client bundle. Releases use a tag matching the manifest version exactly (for example `0.5.1`). No production credentials are needed to build.
 
 ## License and support
 
