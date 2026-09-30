@@ -108,7 +108,7 @@ jobs:
             }
             const updated=path==='manifest.json'?manifest:{...value,[manifest.version]:manifest.minAppVersion};
             if(JSON.stringify(value)===JSON.stringify(updated))continue;
-            const saved=await fetch(base+'/contents/'+path,{method:'PUT',headers,body:JSON.stringify({message:'Update LINBSYNC '+manifest.version+' metadata',sha:current.sha,branch:'main',content:Buffer.from(JSON.stringify(updated,null,2)+'\n').toString('base64')})});
+            const saved=await fetch(base+'/contents/'+path,{method:'PUT',headers,body:JSON.stringify({message:'Update LINB '+manifest.version+' metadata',sha:current.sha,branch:'main',content:Buffer.from(JSON.stringify(updated,null,2)+'\n').toString('base64')})});
             if(!saved.ok)throw new Error('Cannot save public metadata: '+saved.status);
           }
           const ref=await fetch(base+'/git/ref/heads/main',{headers});if(!ref.ok)throw new Error('Cannot read metadata commit');
@@ -122,7 +122,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           if ! gh release view "$RELEASE_VERSION" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
-            gh release create "$RELEASE_VERSION" --repo "$GITHUB_REPOSITORY" --target "$PUBLIC_RELEASE_SHA" --title "LINBSYNC $RELEASE_VERSION" --notes 'Download main.js, manifest.json and styles.css together. See the README for installation and sign-in.' --draft
+            gh release create "$RELEASE_VERSION" --repo "$GITHUB_REPOSITORY" --target "$PUBLIC_RELEASE_SHA" --title "LINB $RELEASE_VERSION" --notes 'Download main.js, manifest.json and styles.css together. See the README for installation and sign-in.' --draft
             gh release upload "$RELEASE_VERSION" --repo "$GITHUB_REPOSITORY" release-output/main.js release-output/manifest.json release-output/styles.css
             gh release edit "$RELEASE_VERSION" --repo "$GITHUB_REPOSITORY" --draft=false --latest
           fi
